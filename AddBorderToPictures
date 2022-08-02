@@ -1,0 +1,20 @@
+Sub AddBorderToPictures()
+
+    ' Add border to pictures that are "inline with text"
+    Dim oInlineShape As InlineShape
+    For Each oInlineShape In ActiveDocument.InlineShapes
+        oInlineShape.Borders.Enable = True
+        oInlineShape.Borders.OutsideColor = wdColorBlueGray
+        oInlineShape.Borders.OutsideLineWidth = wdLineWidth150pt
+        oInlineShape.Borders.OutsideLineStyle = wdLineStyleSingle
+    Next
+
+    ' Add border to pictures that are floating
+    Dim oShape As Shape
+    For Each oShape In ActiveDocument.Shapes
+        oShape.Line.ForeColor.RGB = RGB(0, 0, 0)
+        oShape.Line.Weight = 1
+        oShape.Line.DashStyle = msoLineSolid
+    Next
+
+End Sub
